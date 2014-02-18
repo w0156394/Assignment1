@@ -1,0 +1,58 @@
+﻿body {
+    padding-left: 100px;
+    background-color: #FFFF66;
+    color: #702500;
+    width:500px; 
+}
+fieldset {
+   background-color: #cc7022;
+   border:1px solid black;
+   width:375px;
+}
+input[type=SUBMIT] {
+	background-color: #702500;
+	color: #ffffff;
+	border-color:#000000;
+}
+input[type=FILE] {
+	background-color: #702500;
+	color: #ffffff;
+	border-color:#000000;
+}
+
+
+
+#block {
+   background-color: #993300;
+}
+
+#imgDisp {
+    Width: 300px;
+}
+#lblTitle{
+    Width: 300px;
+}
+#lblCaption{
+    Width: 300px;
+    background-color: #eeeeee;
+    border: none;
+}
+#txtTitle{
+    background-color: #ffffff;
+    border: groove;
+}
+#txtCaption{
+    Width: 300px;
+    background-color: #ffffff;
+    border: groove;
+}
+.imgHeader {
+    Width: 500px;
+}
+a {
+    text-decoration:none;
+    font-weight:bold;
+    font-size:18px;
+    border:solid;
+    color:#000000;
+}
