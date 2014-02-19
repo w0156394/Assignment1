@@ -8,7 +8,7 @@
 		$myFile = @fopen($filename, "a+") or die ("failed to open student name file");
 		@fwrite($myFile, $nameToAdd) or die ("failed to write student name to file");
 		@fclose($myFile);
-		echo " $nameToAdd added to $b";
+		//echo " $nameToAdd added to $b" . "<br/>";
 	} 
 	
 	//it's ok to send, so build the email and send it
@@ -25,9 +25,14 @@
 	$subject = "All-in-One Web Site Feedback";
 	$mailheaders = "From:it.nscctruro.ca 
 	<webmaster@nscctruro.ca>\n";
+	$mailheaders .= "MIME-Version: 1.0\r\n";
+	$mailheaders .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 	//$mailheaders .= "Reply-To: $_POST['lblHdmEmail']\n";
 	//$mailheaders .= "CC: $_POST['lblHdmEmail']";
 	
+	$filePath = $_POST['lblHdmImage'];
+	//echo $filePath;
+	//$attachment = chunk_split(base64_encode(file_get_contents($filePath))); 
 	//send the mail
 	mail($to, $subject, $msg, $mailheaders);
 

@@ -15,7 +15,9 @@
 			if(eregi("^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$", $_POST['txtEmail'])) {   
 				//use ftp_put to upload the image
 				ftp_put($conn_id, "../../files/img/".$_FILES['img1']['name'], $_FILES['img1']['tmp_name'],FTP_ASCII);
-												
+					
+				$ImageLocation = "../../files/img/" . $_FILES['img1']['name'];
+				//echo $ImageLocation;
 				
 				//fill variables
 				$firstName = $_POST['txtFirstName'];
@@ -28,7 +30,13 @@
 				$forthCourses = $_POST['selForthCourses'];
 				
 				//populate email message
-				$conMsg = "First Name: $firstName <br/>				
+				$conMsg = "<html>
+						<head>
+						<title>Student Course Tracker</title>
+						<link rel='stylesheet' type='text/css' href='StyleSheet.css' />
+						</head>
+						<body>
+						First Name: $firstName <br/>				
 						Last Name: $lastName <br/>	
 						Email: $email <br/>	
 						Date Of Birth: $dOB <br/>	
@@ -36,9 +44,10 @@
 						Second Courses: $secondCourses <br/>	
 						Third Courses: $thirdCourses <br/>	
 						Forth Courses: $forthCourses  <br/>	
-						Image: 
-						<img src='../../files/img/".$_FILES['img1']['name']."'
-						alt='Image Of Student' height='42' width='42'>	\n";
+						Image: <img src='http://php.nscctruro.ca/~w0156394/files/img/" . $_FILES['img1']['name'] . "'
+						alt='Image Of Student' height='42' width='42'>
+						</body>
+						</html>";
 				
 				//format first name with last initial
 				$lastNameExp = explode(" ", $lastName);
@@ -71,7 +80,8 @@
 		<form method="POST" action="work_Assignment1.php"  ENCTYPE="multipart/form-data">	  
 			<fieldset>
 				<legend>Student Info</legend>
-				<? echo $conMsg ?>				
+				<? echo $conMsg ?>	
+				<input name="lblHdmImage" type="hidden" value="<? echo $ImageLocation; ?>" />						
 				<input name="lblHdmMsg" type="hidden" value="<? echo $conMsg; ?>" />
 				<input name="lblHdmEmail" type="hidden" value="<? echo $email; ?>" />
 				<input name="lblHdmFirstL" type="hidden" value="<? echo $nameToAdd; ?>" />
